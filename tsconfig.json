@@ -3,7 +3,7 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "baseUrl": "./src",
+    "baseUrl": ".",
 
     "rootDir": "./src",
     "outDir": "./dist",
@@ -21,8 +21,13 @@
 
     "skipLibCheck": true,
     "paths": {
-      "@models/*": ["models/*"],
-      "@controllers/*": ["controllers/*"]
+      "@models/*": ["src/models/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@routes/*": ["src/routes/*"],
+      "@services/*": ["src/services/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@utils/*": ["src/utils/*"],
+      "@schema/*": ["src/schema/*"]
     }
   },
   "include": ["src/**/*.ts"],

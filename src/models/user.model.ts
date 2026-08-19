@@ -1,15 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import config from "config";
-
-export interface UserDocument extends mongoose.Document {
-  email: string;
-  name: string;
-  password: string;
-  createdAt: Date;
-  updatedAt: Date;
-  //   comparePassword(candidatePassword: String): Promise<boolean>;
-}
+import type { UserDocument } from "src/types.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -23,7 +15,7 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre("save", async function () {
-  const user = this as UserDocument;
+  const user = this as unknown as UserDocument;
 
   if (!user.isModified("password")) {
     return;
