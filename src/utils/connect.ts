@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import config from "config";
 import logger from "./logger.js";
+
 const connect = async () => {
   const dbUri = config.get<string>("dbUri");
 
