@@ -1,4 +1,4 @@
-import { createSession } from "@services/session.service.js";
+import { createSession, findSessions } from "@services/session.service.js";
 import { validatePassword } from "@services/user.service.js";
 import { signJwt } from "@utils/jwt.utils.js";
 import type { Request, Response } from "express";
@@ -51,4 +51,23 @@ export const createUserSession = async (
   );
 
   return res.send({ accessToken, refreshToken });
+};
+
+export const getUserSession = async (
+  req: Request<
+    {},
+    {},
+    {
+      email: string;
+      password: string;
+    }
+  >,
+  res: Response,
+) => {
+  console.log("res.locals.user", res.locals.user);
+  const userId = res.locals.user._id;
+
+  const sessions = await findSessions({ user: userId, valid: true });
+
+  return res.send(sessions);
 };

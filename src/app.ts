@@ -3,11 +3,13 @@ import config from "config";
 import connect from "@utils/connect.js";
 import logger from "@utils/logger.js";
 import routes from "@routes/index.js";
+import { deserializeUser } from "@middleware/deserializeUser.js";
 
 const port = config.get<number>("port");
 const app = express();
 
 app.use(express.json());
+app.use(deserializeUser);
 
 app.get("/healthcheck", (_req, res) => {
   res.sendStatus(200);

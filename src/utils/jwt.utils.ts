@@ -8,8 +8,8 @@ const publicKey = config
   .get<string>("accessTokenPublicKey")
   .replace(/\\n/g, "\n");
 
-console.log("CONFIG privateds:", privateKey);
-console.log("CONFIG publicds:", publicKey);
+// console.log("CONFIG privateds:", privateKey);
+// console.log("CONFIG publicds:", publicKey);
 
 export const signJwt = (
   object: Object,
