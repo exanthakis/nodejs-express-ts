@@ -34,33 +34,3 @@
 
   "exclude": ["node_modules", "dist"]
 }
-
-// {
-//   "compilerOptions": {
-//     "target": "ESNext",
-//     "module": "NodeNext",
-//     "moduleResolution": "NodeNext",
-
-//     "rootDir": "./src",
-//     "outDir": "./dist",
-
-//     "types": ["node"],
-
-//     "sourceMap": true,
-//     "declaration": true,
-//     "declarationMap": true,
-
-//     "noUncheckedIndexedAccess": true,
-//     "exactOptionalPropertyTypes": true,
-
-//     "strict": true,
-//     "verbatimModuleSyntax": true,
-//     "isolatedModules": true,
-//     "noUncheckedSideEffectImports": true,
-//     "moduleDetection": "force",
-
-//     "skipLibCheck": true
-//   },
-//   "include": ["src"],
-//   "exclude": ["node_modules", "dist"]
-// }

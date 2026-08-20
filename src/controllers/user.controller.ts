@@ -9,10 +9,7 @@ export const createUserHandler = async (
 ) => {
   try {
     const user = await createUser(req.body);
-    console.log(user);
-    const { password, ...newUser } = user.toObject();
-    console.log(newUser);
-    return res.status(201).json(newUser);
+    return res.status(201).json(user);
   } catch (e: unknown) {
     logger.error(e);
     return res.status(409).send(e instanceof Error ? e?.message : "");

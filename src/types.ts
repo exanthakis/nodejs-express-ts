@@ -1,22 +1,23 @@
 import type mongoose from "mongoose";
 
-export interface UserInput {
+interface UserInput {
   email: string;
   name: string;
   password: string;
 }
 
-export interface UserDocument extends UserInput, mongoose.Document {
+interface UserDocument extends UserInput, mongoose.Document {
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<Boolean>;
 }
 
-// export interface UserDocument extends mongoose.Document {
-//   email: string;
-//   name: string;
-//   password: string;
-//   createdAt: Date;
-//   updatedAt: Date;
-//   //   comparePassword(candidatePassword: String): Promise<boolean>;
-// }
+interface Session extends mongoose.Document {
+  user: UserDocument["_id"];
+  valid: boolean;
+  userAgent: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export type { UserInput, UserDocument, Session };
