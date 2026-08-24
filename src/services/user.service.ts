@@ -1,7 +1,7 @@
 import UserModel from "@models/user.model.js";
 import type { UserInput } from "src/types.js";
 
-export const createUser = async (input: UserInput) => {
+const createUser = async (input: UserInput) => {
   try {
     const user = await UserModel.create(input);
     const { password, ...newUser } = user.toObject();
@@ -11,7 +11,7 @@ export const createUser = async (input: UserInput) => {
   }
 };
 
-export const validatePassword = async ({
+const validatePassword = async ({
   email,
   password,
 }: {
@@ -29,3 +29,5 @@ export const validatePassword = async ({
 
   return newUser;
 };
+
+export { createUser, validatePassword };
