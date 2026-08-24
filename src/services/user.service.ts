@@ -1,5 +1,5 @@
 import UserModel from "@models/user.model.js";
-import type { UserInput } from "src/types.js";
+import type { UserDocument, UserInput } from "src/types.js";
 
 const createUser = async (input: UserInput) => {
   try {
@@ -30,4 +30,8 @@ const validatePassword = async ({
   return newUser;
 };
 
-export { createUser, validatePassword };
+const findUser = async (query: Partial<UserDocument>) => {
+  return UserModel.findOne(query).lean();
+};
+
+export { createUser, validatePassword, findUser };

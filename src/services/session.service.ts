@@ -1,5 +1,9 @@
 import SessionModel from "@models/session.model.js";
+import { signJwt, verifyJwt } from "@utils/jwt.utils.js";
 import type { Session, UserDocument } from "src/types.js";
+import jwt from "jsonwebtoken";
+import config from "config";
+import { findUser } from "./user.service.js";
 
 const createSession = async (userId: string, userAgent: string) => {
   const session = await SessionModel.create({ user: userId, userAgent });
@@ -16,8 +20,41 @@ const findSessions = async (query: {
   return session;
 };
 
-const updateSession = (query: Partial<Session>, update: Partial<Session>) => {
+const updateSession = async (
+  query: Partial<Session>,
+  update: Partial<Session>,
+) => {
   return SessionModel.updateOne(query, update);
 };
 
-export { createSession, findSessions, updateSession };
+const reIssueAccessToken = async ({
+  refreshToken,
+}: {
+  refreshToken: string;
+}) => {
+  const { decoded } = verifyJwt(refreshToken);
+
+  if (!decoded || typeof decoded === "string" || !decoded.session) {
+    return false;
+  }
+
+  const session = await SessionModel.findById(decoded.session);
+
+  if (!session || !session.valid) return false;
+
+  const user = await findUser({ _id: session.user });
+
+  if (!user) return false;
+
+  const accessToken = signJwt(
+    { ...user, session: session._id },
+    {
+      expiresIn: config.get<string>(
+        "accessTokenTtl",
+      ) as jwt.SignOptions["expiresIn"],
+    },
+  );
+
+  return accessToken;
+};
+export { createSession, findSessions, updateSession, reIssueAccessToken };
