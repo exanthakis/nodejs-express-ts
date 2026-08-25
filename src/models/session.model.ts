@@ -8,7 +8,9 @@ const sessionSchema = new mongoose.Schema(
     userAgent: { type: String }, //store user browser
   },
   {
-    timestamps: true,
+    // createdAt → when the session document was first created.
+    // updatedAt → when the session document was last modified.
+    timestamps: true, //automatically adds createdAt, updatedAt
   },
 );
 

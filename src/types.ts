@@ -20,4 +20,14 @@ interface Session extends mongoose.Document {
   updatedAt: Date;
 }
 
-export type { UserInput, UserDocument, Session };
+interface Product extends mongoose.Document {
+  user: UserDocument["_id"];
+  title: string;
+  description: string;
+  price: number;
+  image: string;
+  createAt: Date;
+  updatedAt: Date;
+}
+
+export type { UserInput, UserDocument, Session, Product };
