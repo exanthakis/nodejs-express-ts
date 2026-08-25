@@ -1,7 +1,7 @@
 import {
-  createUserSession,
-  deleteSession,
-  getUserSession,
+  getUserSessionHandler,
+  createUserSessionHandler,
+  deleteSessionHandler,
 } from "@controllers/session.controller.js";
 import { requireUser } from "@middleware/requireUser.js";
 import validateResource from "@middleware/validateResource.js";
@@ -10,8 +10,12 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/", requireUser, getUserSession);
-router.post("/", validateResource(createSessionSchema), createUserSession);
-router.delete("/", requireUser, deleteSession);
+router.get("/", requireUser, getUserSessionHandler);
+router.post(
+  "/",
+  validateResource(createSessionSchema),
+  createUserSessionHandler,
+);
+router.delete("/", requireUser, deleteSessionHandler);
 
 export default router;

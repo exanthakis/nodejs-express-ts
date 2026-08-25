@@ -9,7 +9,7 @@ import type { Request, Response } from "express";
 import config from "config";
 import jwt from "jsonwebtoken";
 
-export const createUserSession = async (
+export const createUserSessionHandler = async (
   req: Request<
     {},
     {},
@@ -57,7 +57,7 @@ export const createUserSession = async (
   return res.send({ accessToken, refreshToken });
 };
 
-export const getUserSession = async (req: Request, res: Response) => {
+export const getUserSessionHandler = async (req: Request, res: Response) => {
   const userId = res.locals.user._id;
 
   const sessions = await findSessions({ user: userId, valid: true });
@@ -65,7 +65,7 @@ export const getUserSession = async (req: Request, res: Response) => {
   return res.send(sessions);
 };
 
-export const deleteSession = async (req: Request, res: Response) => {
+export const deleteSessionHandler = async (req: Request, res: Response) => {
   const sessionId = res.locals.user.session;
 
   await updateSession({ _id: sessionId }, { valid: false });
