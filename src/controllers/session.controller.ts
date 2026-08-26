@@ -10,10 +10,18 @@ import config from "../config.js";
 import jwt from "jsonwebtoken";
 import type { CreateSessionInput } from "../schema/session.schema.js";
 import logger from "../utils/logger.js";
+import type { Session } from "src/types.js";
 
+// Request<
+//   Params,
+//   ResBody,
+//   ReqBody,
+//   ReqQuery,
+//   Locals
+// >
 const createUserSessionHandler = async (
   req: Request<{}, {}, CreateSessionInput["body"]>,
-  res: Response,
+  res: Response<{ accessToken: string; refreshToken: string } | string>,
 ) => {
   try {
     // Validate user password
@@ -53,7 +61,10 @@ const createUserSessionHandler = async (
   }
 };
 
-const getUserSessionHandler = async (_req: Request, res: Response) => {
+const getUserSessionHandler = async (
+  _req: Request,
+  res: Response<Session[] | string | undefined>,
+) => {
   try {
     const userId = res.locals.user._id;
 
@@ -69,7 +80,10 @@ const getUserSessionHandler = async (_req: Request, res: Response) => {
   }
 };
 
-const deleteSessionHandler = async (_req: Request, res: Response) => {
+const deleteSessionHandler = async (
+  _req: Request,
+  res: Response<{ accessToken: null; refreshToken: null } | string>,
+) => {
   try {
     const sessionId = res.locals.user.session;
 
