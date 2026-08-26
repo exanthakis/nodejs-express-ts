@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema(
       unique: true,
       default: () => `product_${nanoid()}`,
     },
-    user: { type: mongoose.SchemaTypes.ObjectId, ref: "User" },
+    user: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },

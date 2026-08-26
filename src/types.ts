@@ -21,6 +21,7 @@ interface Session extends mongoose.Document {
 }
 
 interface Product extends mongoose.Document {
+  productId: string;
   user: UserDocument["_id"];
   title: string;
   description: string;
