@@ -14,3 +14,5 @@ export const createSessionSchema = object({
     ),
   }),
 });
+
+export type CreateSessionInput = z.infer<typeof createSessionSchema>;

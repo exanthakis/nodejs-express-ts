@@ -1,4 +1,5 @@
 import UserModel from "@models/user.model.js";
+import type { CreateSessionInput } from "@schema/session.schema.js";
 import type { UserDocument, UserInput } from "src/types.js";
 
 const createUser = async (input: UserInput) => {
@@ -14,10 +15,7 @@ const createUser = async (input: UserInput) => {
 const validatePassword = async ({
   email,
   password,
-}: {
-  email: string;
-  password: string;
-}) => {
+}: CreateSessionInput["body"]) => {
   const user = await UserModel.findOne({ email });
 
   if (!user) return false;

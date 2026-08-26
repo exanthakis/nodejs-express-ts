@@ -8,16 +8,11 @@ import { signJwt } from "@utils/jwt.utils.js";
 import type { Request, Response } from "express";
 import config from "config";
 import jwt from "jsonwebtoken";
+import type { CreateSessionInput } from "@schema/session.schema.js";
+import logger from "@utils/logger.js";
 
 export const createUserSessionHandler = async (
-  req: Request<
-    {},
-    {},
-    {
-      email: string;
-      password: string;
-    }
-  >,
+  req: Request<{}, {}, CreateSessionInput["body"]>,
   res: Response,
 ) => {
   // Validate user password
@@ -57,15 +52,19 @@ export const createUserSessionHandler = async (
   return res.send({ accessToken, refreshToken });
 };
 
-export const getUserSessionHandler = async (req: Request, res: Response) => {
+export const getUserSessionHandler = async (_req: Request, res: Response) => {
   const userId = res.locals.user._id;
 
-  const sessions = await findSessions({ user: userId, valid: true });
-
-  return res.send(sessions);
+  try {
+    const sessions = await findSessions({ user: userId, valid: true });
+    return res.status(200).send(sessions);
+  } catch (e: unknown) {
+    logger.error(e);
+    return res.status(409).send(e instanceof Error ? e?.message : "");
+  }
 };
 
-export const deleteSessionHandler = async (req: Request, res: Response) => {
+export const deleteSessionHandler = async (_req: Request, res: Response) => {
   const sessionId = res.locals.user.session;
 
   await updateSession({ _id: sessionId }, { valid: false });
