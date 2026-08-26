@@ -10,6 +10,10 @@ export const deserializeUser = async (
   const accessToken = req.get("authorization")?.replace(/^Bearer\s/, "") ?? "";
   const refreshToken = req.get("x-refresh");
 
+  console.log("Authorization:", req.get("authorization"));
+  console.log("Access token:", accessToken);
+  console.log("Refresh token:", refreshToken);
+
   if (!accessToken) return next();
 
   const { decoded, expired } = verifyJwt(accessToken);
