@@ -3,18 +3,20 @@ import type {
   DeleteProductInput,
   ReadProductInput,
   UpdateProductInput,
-} from "@schema/product.schema.js";
+} from "../schema/product.schema.js";
 import {
   createProduct,
   deleteProduct,
   findAndUpdateProduct,
   findProduct,
-} from "@services/product.service.js";
+} from "../services/product.service.js";
 import type { Request, Response } from "express";
-import logger from "@utils/logger.js";
+import logger from "../utils/logger.js";
+import type { Product } from "src/types.js";
+
 const createProductHandler = async (
   req: Request<{}, {}, CreateProductInput["body"]>,
-  res: Response,
+  res: Response<Product | string>,
 ) => {
   try {
     const userId = res.locals.user._id;
@@ -34,7 +36,7 @@ const createProductHandler = async (
 
 const updateProductHandler = async (
   req: Request<UpdateProductInput["params"], {}, UpdateProductInput["body"]>,
-  res: Response,
+  res: Response<Product | string | null>,
 ) => {
   try {
     const userId = res.locals.user._id;
@@ -64,7 +66,7 @@ const updateProductHandler = async (
 
 const getProductHandler = async (
   req: Request<UpdateProductInput["params"]>,
-  res: Response,
+  res: Response<Product | string>,
 ) => {
   try {
     const productId = req.params.productId;

@@ -1,5 +1,5 @@
-import { reIssueAccessToken } from "@services/session.service.js";
-import { verifyJwt } from "@utils/jwt.utils.js";
+import { reIssueAccessToken } from "../services/session.service.js";
+import { verifyJwt } from "../utils/jwt.utils.js";
 import type { Request, Response, NextFunction } from "express";
 
 export const deserializeUser = async (

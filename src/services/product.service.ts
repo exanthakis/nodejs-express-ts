@@ -1,6 +1,6 @@
-import ProductModel from "@models/product.model.js";
+import ProductModel from "../models/product.model.js";
 import type { QueryOptions, UpdateQuery } from "mongoose";
-import type { Product } from "src/types.js";
+import type { Product } from "../types.js";
 
 const createProduct = async (input: Partial<Product>) => {
   return ProductModel.create(input);

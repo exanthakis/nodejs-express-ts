@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import config from "config";
-import type { UserDocument } from "src/types.js";
+import config from "../config.js";
+import type { UserDocument } from "../types.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -21,7 +21,7 @@ userSchema.pre("save", async function () {
     return;
   }
 
-  const salt = await bcrypt.genSalt(config.get<number>("saltWorkFactor"));
+  const salt = await bcrypt.genSalt(config.saltWorkFactor);
   const hash = await bcrypt.hash(user.password, salt);
 
   user.password = hash;

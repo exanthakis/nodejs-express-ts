@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import config from "config";
+import config from "../config.js";
 import logger from "./logger.js";
 
 const connect = async () => {
-  const dbUri = config.get<string>("dbUri");
+  const dbUri = config.dbUri;
 
   try {
     await mongoose.connect(dbUri);

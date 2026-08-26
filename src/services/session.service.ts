@@ -1,9 +1,9 @@
-import SessionModel from "@models/session.model.js";
-import { signJwt, verifyJwt } from "@utils/jwt.utils.js";
-import type { Session, UserDocument } from "src/types.js";
+import SessionModel from "../models/session.model.js";
+import { signJwt, verifyJwt } from "../utils/jwt.utils.js";
 import jwt from "jsonwebtoken";
-import config from "config";
+import config from "../config.js";
 import { findUser } from "./user.service.js";
+import type { Session, UserDocument } from "../types.js";
 
 const createSession = async (userId: string, userAgent: string) => {
   const session = await SessionModel.create({ user: userId, userAgent });
@@ -49,9 +49,7 @@ const reIssueAccessToken = async ({
   const accessToken = signJwt(
     { ...user, session: session._id },
     {
-      expiresIn: config.get<string>(
-        "accessTokenTtl",
-      ) as jwt.SignOptions["expiresIn"],
+      expiresIn: config.accessTokenTtl as jwt.SignOptions["expiresIn"],
     },
   );
 

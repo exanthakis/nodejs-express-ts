@@ -1,15 +1,8 @@
-import config from "config";
+import config from "../config.js";
 import jwt from "jsonwebtoken";
 
-const privateKey = config
-  .get<string>("accessTokenPrivateKey")
-  .replace(/\\n/g, "\n");
-const publicKey = config
-  .get<string>("accessTokenPublicKey")
-  .replace(/\\n/g, "\n");
-
-// console.log("CONFIG privateds:", privateKey);
-// console.log("CONFIG publicds:", publicKey);
+const privateKey = config.accessTokenPrivateKey.replace(/\\n/g, "\n");
+const publicKey = config.accessTokenPublicKey.replace(/\\n/g, "\n");
 
 export const signJwt = (
   object: Object,

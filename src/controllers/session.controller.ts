@@ -2,14 +2,14 @@ import {
   createSession,
   findSessions,
   updateSession,
-} from "@services/session.service.js";
-import { validatePassword } from "@services/user.service.js";
-import { signJwt } from "@utils/jwt.utils.js";
+} from "../services/session.service.js";
+import { validatePassword } from "../services/user.service.js";
+import { signJwt } from "../utils/jwt.utils.js";
 import type { Request, Response } from "express";
-import config from "config";
+import config from "../config.js";
 import jwt from "jsonwebtoken";
-import type { CreateSessionInput } from "@schema/session.schema.js";
-import logger from "@utils/logger.js";
+import type { CreateSessionInput } from "../schema/session.schema.js";
+import logger from "../utils/logger.js";
 
 const createUserSessionHandler = async (
   req: Request<{}, {}, CreateSessionInput["body"]>,
@@ -34,9 +34,7 @@ const createUserSessionHandler = async (
     const accessToken = signJwt(
       { ...user, session: session._id },
       {
-        expiresIn: config.get<string>(
-          "accessTokenTtl",
-        ) as jwt.SignOptions["expiresIn"],
+        expiresIn: config.accessTokenTtl as jwt.SignOptions["expiresIn"],
       },
     );
 
@@ -44,9 +42,7 @@ const createUserSessionHandler = async (
     const refreshToken = signJwt(
       { ...user, session: session._id },
       {
-        expiresIn: config.get<string>(
-          "refreshTokenTtl",
-        ) as jwt.SignOptions["expiresIn"],
+        expiresIn: config.refreshTokenTtl as jwt.SignOptions["expiresIn"],
       },
     );
 

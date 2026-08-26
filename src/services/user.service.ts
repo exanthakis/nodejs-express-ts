@@ -1,6 +1,6 @@
-import UserModel from "@models/user.model.js";
-import type { CreateSessionInput } from "@schema/session.schema.js";
-import type { UserDocument, UserInput } from "src/types.js";
+import UserModel from "../models/user.model.js";
+import type { CreateSessionInput } from "../schema/session.schema.js";
+import type { UserDocument, UserInput } from "../types.js";
 
 const createUser = async (input: UserInput) => {
   try {
