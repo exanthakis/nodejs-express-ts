@@ -19,10 +19,13 @@ app.get("/healthcheck", (_req, res) => {
 
 app.use("/api", routes);
 
+app.use((req, res) => {
+  res.status(404).json({
+    message: "Route not found",
+  });
+});
+
 app.listen(port, async () => {
   logger.info(`App is running at http:localhost:${port}`);
-
   await connect();
-
-  // routes(app);
 });
