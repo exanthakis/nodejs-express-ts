@@ -86,7 +86,7 @@ const getProductHandler = async (
 
 const deleteProductHandler = async (
   req: Request<DeleteProductInput["params"]>,
-  res: Response,
+  res: Response<Product | string>,
 ) => {
   try {
     const userId = res.locals.user._id;
