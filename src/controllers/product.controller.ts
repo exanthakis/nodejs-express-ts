@@ -43,7 +43,7 @@ const updateProductHandler = async (
     return res.sendStatus(404);
   }
 
-  if (product.user !== userId) {
+  if (String(product.user) !== userId) {
     return res.sendStatus(403);
   }
 
@@ -82,7 +82,7 @@ const deleteProductHandler = async (
     return res.sendStatus(404);
   }
 
-  if (product.user !== userId) {
+  if (String(product.user) !== userId) {
     return res.sendStatus(403);
   }
 
