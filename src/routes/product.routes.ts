@@ -12,33 +12,33 @@ import {
   getProductSchema,
   updateProductSchema,
 } from "../schema/product.schema.js";
-import express from "express";
+import express, { Router } from "express";
 
-const router = express.Router();
+const productRouter: Router = express.Router();
 
-router.post(
+productRouter.post(
   "/",
   requireUser,
   validateResource(createProductSchema),
   createProductHandler,
 );
 
-router.put(
+productRouter.put(
   "/:productId",
   [requireUser, validateResource(updateProductSchema)],
   updateProductHandler,
 );
 
-router.get(
+productRouter.get(
   "/:productId",
   validateResource(getProductSchema),
   getProductHandler,
 );
 
-router.delete(
+productRouter.delete(
   "/:productId",
   [requireUser, validateResource(deleteProductSchema)],
   deleteProductHandler,
 );
 
-export default router;
+export default productRouter;

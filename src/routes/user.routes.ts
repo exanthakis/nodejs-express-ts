@@ -3,8 +3,8 @@ import { createUserHandler } from "../controllers/user.controller.js";
 import validateResource from "../middleware/validateResource.js";
 import { createUserSchema } from "../schema/user.schema.js";
 
-const router = Router();
+const userRouter: Router = Router();
 
-router.post("/", validateResource(createUserSchema), createUserHandler);
+userRouter.post("/", validateResource(createUserSchema), createUserHandler);
 
-export default router;
+export default userRouter;

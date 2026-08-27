@@ -6,16 +6,16 @@ import {
 import { requireUser } from "../middleware/requireUser.js";
 import validateResource from "../middleware/validateResource.js";
 import { createSessionSchema } from "../schema/session.schema.js";
-import express from "express";
+import express, { Router } from "express";
 
-const router = express.Router();
+const sessionRouter: Router = express.Router();
 
-router.get("/", requireUser, getUserSessionHandler);
-router.post(
+sessionRouter.get("/", requireUser, getUserSessionHandler);
+sessionRouter.post(
   "/",
   validateResource(createSessionSchema),
   createUserSessionHandler,
 );
-router.delete("/", requireUser, deleteSessionHandler);
+sessionRouter.delete("/", requireUser, deleteSessionHandler);
 
-export default router;
+export default sessionRouter;
