@@ -129,7 +129,7 @@ Project structure look like:
 .
 ├── src/
 │   ├── controllers/
-│   └── middleware/
+│   ├── middleware/
 │   ├── models/
 │   ├── routes/
 │   ├── schemas/
