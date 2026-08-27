@@ -5,7 +5,7 @@ import {
 } from '../controllers/session.controller.ts';
 import { requireUser } from '../middleware/requireUser.ts';
 import validateResource from '../middleware/validateResource.ts';
-import { createSessionSchema } from '../schema/session.schema.ts';
+import { createSessionSchema } from '../schemas/session.schema.ts';
 import express, { Router } from 'express';
 
 const sessionRouter: Router = express.Router();

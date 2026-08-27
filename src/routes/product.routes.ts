@@ -11,7 +11,7 @@ import {
   deleteProductSchema,
   getProductSchema,
   updateProductSchema,
-} from '../schema/product.schema.ts';
+} from '../schemas/product.schema.ts';
 import express, { Router } from 'express';
 
 const productRouter: Router = express.Router();

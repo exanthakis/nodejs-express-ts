@@ -3,7 +3,7 @@ import type {
   DeleteProductInput,
   ReadProductInput,
   UpdateProductInput,
-} from '../schema/product.schema.ts';
+} from '../schemas/product.schema.ts';
 import {
   createProduct,
   deleteProduct,

@@ -129,11 +129,12 @@ Project structure look like:
 .
 ├── src/
 │   ├── controllers/
+│   └── middleware/
 │   ├── models/
 │   ├── routes/
 │   ├── schemas/
 │   ├── services/
-│   └── ...
+│   └── utils/
 ├── .env
 ├── package.json
 ├── tsconfig.json

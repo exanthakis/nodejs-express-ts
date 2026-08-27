@@ -8,7 +8,7 @@ import { signJwt } from '../utils/jwt.utils.ts';
 import type { Request, Response } from 'express';
 import config from '../config.ts';
 import jwt from 'jsonwebtoken';
-import type { CreateSessionInput } from '../schema/session.schema.ts';
+import type { CreateSessionInput } from '../schemas/session.schema.ts';
 import logger from '../utils/logger.ts';
 import type { Session } from 'src/types.ts';
 
