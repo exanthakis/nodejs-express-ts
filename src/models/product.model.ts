@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { customAlphabet } from "nanoid";
-import type { Product } from "../types.js";
+import type { Product } from "../types.ts";
 
 const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
 

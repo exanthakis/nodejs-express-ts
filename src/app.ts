@@ -1,10 +1,10 @@
 import express from "express";
-import config from "./config.js";
+import config from "./config.ts";
 import cors from "cors";
-import { deserializeUser } from "./middleware/deserializeUser.js";
-import routes from "./routes/index.js";
-import logger from "./utils/logger.js";
-import connect from "./utils/connect.js";
+import { deserializeUser } from "./middleware/deserializeUser.ts";
+import routes from "./routes/index.ts";
+import logger from "./utils/logger.ts";
+import connect from "./utils/connect.ts";
 
 const port = config.port;
 const app = express();

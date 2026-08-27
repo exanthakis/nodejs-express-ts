@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import type { Session } from "../types.js";
+import type { Session } from "../types.ts";
 
 const sessionSchema = new mongoose.Schema(
   {

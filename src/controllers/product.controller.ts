@@ -3,16 +3,16 @@ import type {
   DeleteProductInput,
   ReadProductInput,
   UpdateProductInput,
-} from "../schema/product.schema.js";
+} from "../schema/product.schema.ts";
 import {
   createProduct,
   deleteProduct,
   findAndUpdateProduct,
   findProduct,
-} from "../services/product.service.js";
+} from "../services/product.service.ts";
 import type { Request, Response } from "express";
-import logger from "../utils/logger.js";
-import type { Product } from "src/types.js";
+import logger from "../utils/logger.ts";
+import type { Product } from "src/types.ts";
 
 const createProductHandler = async (
   req: Request<{}, {}, CreateProductInput["body"]>,

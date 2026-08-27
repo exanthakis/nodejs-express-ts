@@ -1,4 +1,4 @@
-import config from "../config.js";
+import config from "../config.ts";
 import jwt from "jsonwebtoken";
 
 const privateKey = config.accessTokenPrivateKey.replace(/\\n/g, "\n");

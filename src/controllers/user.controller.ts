@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import logger from "../utils/logger.js";
-import { createUser } from "../services/user.service.js";
-import type { UserInput } from "../types.js";
+import logger from "../utils/logger.ts";
+import { createUser } from "../services/user.service.ts";
+import type { UserInput } from "../types.ts";
 
 export const createUserHandler = async (
   req: Request<{}, {}, UserInput>,

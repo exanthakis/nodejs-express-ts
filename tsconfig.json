@@ -1,24 +1,19 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-
-    "rootDir": "./src",
-    "outDir": "./dist",
-
-    "types": ["node"],
-
-    "strict": true,
     "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
     "skipLibCheck": true,
+    "module": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+    "isolatedModules": true,
+    "sourceMap": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "verbatimModuleSyntax": true, // force to add type keyword
     "paths": { "*": ["./*"] }
   },
   "include": ["src/**/*.ts"],

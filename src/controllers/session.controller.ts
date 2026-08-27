@@ -2,15 +2,15 @@ import {
   createSession,
   findSessions,
   updateSession,
-} from "../services/session.service.js";
-import { validatePassword } from "../services/user.service.js";
-import { signJwt } from "../utils/jwt.utils.js";
+} from "../services/session.service.ts";
+import { validatePassword } from "../services/user.service.ts";
+import { signJwt } from "../utils/jwt.utils.ts";
 import type { Request, Response } from "express";
-import config from "../config.js";
+import config from "../config.ts";
 import jwt from "jsonwebtoken";
-import type { CreateSessionInput } from "../schema/session.schema.js";
-import logger from "../utils/logger.js";
-import type { Session } from "src/types.js";
+import type { CreateSessionInput } from "../schema/session.schema.ts";
+import logger from "../utils/logger.ts";
+import type { Session } from "src/types.ts";
 
 // Request<
 //   Params,

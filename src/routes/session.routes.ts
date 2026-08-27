@@ -2,10 +2,10 @@ import {
   getUserSessionHandler,
   createUserSessionHandler,
   deleteSessionHandler,
-} from "../controllers/session.controller.js";
-import { requireUser } from "../middleware/requireUser.js";
-import validateResource from "../middleware/validateResource.js";
-import { createSessionSchema } from "../schema/session.schema.js";
+} from "../controllers/session.controller.ts";
+import { requireUser } from "../middleware/requireUser.ts";
+import validateResource from "../middleware/validateResource.ts";
+import { createSessionSchema } from "../schema/session.schema.ts";
 import express, { Router } from "express";
 
 const sessionRouter: Router = express.Router();

@@ -3,15 +3,15 @@ import {
   deleteProductHandler,
   getProductHandler,
   updateProductHandler,
-} from "../controllers/product.controller.js";
-import { requireUser } from "../middleware/requireUser.js";
-import validateResource from "../middleware/validateResource.js";
+} from "../controllers/product.controller.ts";
+import { requireUser } from "../middleware/requireUser.ts";
+import validateResource from "../middleware/validateResource.ts";
 import {
   createProductSchema,
   deleteProductSchema,
   getProductSchema,
   updateProductSchema,
-} from "../schema/product.schema.js";
+} from "../schema/product.schema.ts";
 import express, { Router } from "express";
 
 const productRouter: Router = express.Router();

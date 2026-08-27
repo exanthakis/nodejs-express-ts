@@ -1,6 +1,6 @@
-import type { UserLocals } from "src/types.js";
-import { reIssueAccessToken } from "../services/session.service.js";
-import { verifyJwt } from "../utils/jwt.utils.js";
+import type { UserLocals } from "src/types.ts";
+import { reIssueAccessToken } from "../services/session.service.ts";
+import { verifyJwt } from "../utils/jwt.utils.ts";
 import type { Request, Response, NextFunction } from "express";
 
 export const deserializeUser = async (

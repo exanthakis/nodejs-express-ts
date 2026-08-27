@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { createUserHandler } from "../controllers/user.controller.js";
-import validateResource from "../middleware/validateResource.js";
-import { createUserSchema } from "../schema/user.schema.js";
+import { createUserHandler } from "../controllers/user.controller.ts";
+import validateResource from "../middleware/validateResource.ts";
+import { createUserSchema } from "../schema/user.schema.ts";
 
 const userRouter: Router = Router();
 

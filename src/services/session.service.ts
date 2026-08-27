@@ -1,9 +1,9 @@
-import SessionModel from "../models/session.model.js";
-import { signJwt, verifyJwt } from "../utils/jwt.utils.js";
+import SessionModel from "../models/session.model.ts";
+import { signJwt, verifyJwt } from "../utils/jwt.utils.ts";
 import jwt from "jsonwebtoken";
-import config from "../config.js";
-import { findUser } from "./user.service.js";
-import type { Session, UserDocument } from "../types.js";
+import config from "../config.ts";
+import { findUser } from "./user.service.ts";
+import type { Session, UserDocument } from "../types.ts";
 
 const createSession = async (userId: string, userAgent: string) => {
   const session = await SessionModel.create({ user: userId, userAgent });
