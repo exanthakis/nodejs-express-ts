@@ -3,20 +3,20 @@ import type {
   DeleteProductInput,
   ReadProductInput,
   UpdateProductInput,
-} from "../schema/product.schema.ts";
+} from '../schema/product.schema.ts';
 import {
   createProduct,
   deleteProduct,
   findAndUpdateProduct,
   findProduct,
-} from "../services/product.service.ts";
-import type { Request, Response } from "express";
-import logger from "../utils/logger.ts";
-import type { Product } from "src/types.ts";
+} from '../services/product.service.ts';
+import type { Request, Response } from 'express';
+import logger from '../utils/logger.ts';
+import type { Product } from 'src/types.ts';
 
 const createProductHandler = async (
-  req: Request<{}, {}, CreateProductInput["body"]>,
-  res: Response<Product | string>,
+  req: Request<{}, {}, CreateProductInput['body']>,
+  res: Response<Product | string>
 ) => {
   try {
     const userId = res.locals.user._id;
@@ -30,13 +30,13 @@ const createProductHandler = async (
     return res.status(201).json(product);
   } catch (e: unknown) {
     logger.error(e);
-    return res.status(500).send(e instanceof Error ? e.message : "");
+    return res.status(500).send(e instanceof Error ? e.message : '');
   }
 };
 
 const updateProductHandler = async (
-  req: Request<UpdateProductInput["params"], {}, UpdateProductInput["body"]>,
-  res: Response<Product | string | null>,
+  req: Request<UpdateProductInput['params'], {}, UpdateProductInput['body']>,
+  res: Response<Product | string | null>
 ) => {
   try {
     const userId = res.locals.user._id;
@@ -60,13 +60,13 @@ const updateProductHandler = async (
     return res.send(updatedProduct);
   } catch (e: unknown) {
     logger.error(e);
-    return res.status(500).send(e instanceof Error ? e.message : "");
+    return res.status(500).send(e instanceof Error ? e.message : '');
   }
 };
 
 const getProductHandler = async (
-  req: Request<UpdateProductInput["params"]>,
-  res: Response<Product | string>,
+  req: Request<UpdateProductInput['params']>,
+  res: Response<Product | string>
 ) => {
   try {
     const productId = req.params.productId;
@@ -80,13 +80,13 @@ const getProductHandler = async (
     return res.send(product);
   } catch (e: unknown) {
     logger.error(e);
-    return res.status(500).send(e instanceof Error ? e.message : "");
+    return res.status(500).send(e instanceof Error ? e.message : '');
   }
 };
 
 const deleteProductHandler = async (
-  req: Request<DeleteProductInput["params"]>,
-  res: Response<Product | string>,
+  req: Request<DeleteProductInput['params']>,
+  res: Response<Product | string>
 ) => {
   try {
     const userId = res.locals.user._id;
@@ -107,7 +107,7 @@ const deleteProductHandler = async (
     return res.sendStatus(200);
   } catch (e: unknown) {
     logger.error(e);
-    return res.status(500).send(e instanceof Error ? e.message : "");
+    return res.status(500).send(e instanceof Error ? e.message : '');
   }
 };
 

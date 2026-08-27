@@ -1,5 +1,5 @@
-import type mongoose from "mongoose";
-import jwt from "jsonwebtoken";
+import type mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
 
 interface UserInput {
   email: string;
@@ -14,7 +14,7 @@ interface UserDocument extends UserInput, mongoose.Document {
 }
 
 interface Session extends mongoose.Document {
-  user: UserDocument["_id"];
+  user: UserDocument['_id'];
   valid: boolean;
   userAgent: string;
   createdAt: Date;
@@ -23,7 +23,7 @@ interface Session extends mongoose.Document {
 
 interface Product extends mongoose.Document {
   productId: string;
-  user: UserDocument["_id"];
+  user: UserDocument['_id'];
   title: string;
   description: string;
   price: number;

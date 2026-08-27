@@ -1,20 +1,20 @@
-import { object, string, number, z } from "zod";
+import { object, string, number, z } from 'zod';
 
 const payload = {
   body: object({
-    title: string({ error: "Title is required" }),
-    description: string({ error: "Description is required" }).min(
+    title: string({ error: 'Title is required' }),
+    description: string({ error: 'Description is required' }).min(
       120,
-      "Description should be at least 120 characters long",
+      'Description should be at least 120 characters long'
     ),
-    price: number({ error: "Price is required" }),
-    image: string({ error: "Image is required" }),
+    price: number({ error: 'Price is required' }),
+    image: string({ error: 'Image is required' }),
   }),
 };
 
 const params = {
   params: object({
-    productId: string({ error: "productId is required" }),
+    productId: string({ error: 'productId is required' }),
   }),
 };
 

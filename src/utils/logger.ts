@@ -1,8 +1,8 @@
-import logger from "pino";
+import logger from 'pino';
 
 const log = logger({
   transport: {
-    target: "pino-pretty",
+    target: 'pino-pretty',
   },
   base: {
     pid: false,

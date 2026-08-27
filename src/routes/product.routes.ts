@@ -3,42 +3,42 @@ import {
   deleteProductHandler,
   getProductHandler,
   updateProductHandler,
-} from "../controllers/product.controller.ts";
-import { requireUser } from "../middleware/requireUser.ts";
-import validateResource from "../middleware/validateResource.ts";
+} from '../controllers/product.controller.ts';
+import { requireUser } from '../middleware/requireUser.ts';
+import validateResource from '../middleware/validateResource.ts';
 import {
   createProductSchema,
   deleteProductSchema,
   getProductSchema,
   updateProductSchema,
-} from "../schema/product.schema.ts";
-import express, { Router } from "express";
+} from '../schema/product.schema.ts';
+import express, { Router } from 'express';
 
 const productRouter: Router = express.Router();
 
 productRouter.post(
-  "/",
+  '/',
   requireUser,
   validateResource(createProductSchema),
-  createProductHandler,
+  createProductHandler
 );
 
 productRouter.put(
-  "/:productId",
+  '/:productId',
   [requireUser, validateResource(updateProductSchema)],
-  updateProductHandler,
+  updateProductHandler
 );
 
 productRouter.get(
-  "/:productId",
+  '/:productId',
   validateResource(getProductSchema),
-  getProductHandler,
+  getProductHandler
 );
 
 productRouter.delete(
-  "/:productId",
+  '/:productId',
   [requireUser, validateResource(deleteProductSchema)],
-  deleteProductHandler,
+  deleteProductHandler
 );
 
 export default productRouter;
