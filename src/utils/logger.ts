@@ -8,7 +8,6 @@ const log = logger({
     pid: false,
   },
   timestamp: logger.stdTimeFunctions.isoTime,
-  // timestamp: logger.stdTimeFunctions.isoTime,
 });
 
 export default log;
