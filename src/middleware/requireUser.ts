@@ -1,9 +1,8 @@
 import type { Request, Response, NextFunction } from "express";
-import type { UserLocals } from "src/types.js";
 
 export const requireUser = (
-  _req: Request<{}, unknown, unknown, unknown, UserLocals>,
-  res: Response<unknown, UserLocals>,
+  _req: Request,
+  res: Response,
   next: NextFunction,
 ) => {
   const user = res.locals.user;
