@@ -1,18 +1,15 @@
+import type { UserLocals } from "src/types.js";
 import { reIssueAccessToken } from "../services/session.service.js";
 import { verifyJwt } from "../utils/jwt.utils.js";
 import type { Request, Response, NextFunction } from "express";
 
 export const deserializeUser = async (
-  req: Request,
-  res: Response,
+  req: Request<{}, unknown, unknown, unknown, UserLocals>,
+  res: Response<{}, UserLocals>,
   next: NextFunction,
 ) => {
   const accessToken = req.get("authorization")?.replace(/^Bearer\s/, "") ?? "";
   const refreshToken = req.get("x-refresh");
-
-  console.log("Authorization:", req.get("authorization"));
-  console.log("Access token:", accessToken);
-  console.log("Refresh token:", refreshToken);
 
   if (!accessToken) return next();
 

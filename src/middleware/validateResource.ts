@@ -2,7 +2,12 @@ import type { Request, Response, NextFunction } from "express";
 import { z } from "zod";
 
 const validateResource =
-  (schema: z.ZodType) => (req: Request, res: Response, next: NextFunction) => {
+  (schema: z.ZodType) =>
+  (
+    req: Request<{}, unknown, unknown, unknown>,
+    res: Response<unknown>,
+    next: NextFunction,
+  ) => {
     try {
       schema.parse({
         body: req.body,
@@ -10,13 +15,18 @@ const validateResource =
         params: req.params,
       });
 
-      next();
+      return next();
     } catch (e) {
       if (e instanceof z.ZodError) {
-        return res.status(400).send(e.issues);
+        return res.status(400).json({
+          message: "Validation failed",
+          errors: e.issues,
+        });
       }
 
-      return res.status(500).send("Internal server error");
+      return res.status(500).json({
+        message: "Internal server error",
+      });
     }
   };
 

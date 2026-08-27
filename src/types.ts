@@ -1,4 +1,5 @@
 import type mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 
 interface UserInput {
   email: string;
@@ -31,4 +32,8 @@ interface Product extends mongoose.Document {
   updatedAt: Date;
 }
 
-export type { UserInput, UserDocument, Session, Product };
+type UserLocals = {
+  user: jwt.JwtPayload | string | null;
+};
+
+export type { UserInput, UserDocument, Session, Product, UserLocals };
