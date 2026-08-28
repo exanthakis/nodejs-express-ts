@@ -1,0 +1,116 @@
+paths:
+  /api/products:
+    post:
+      tags:
+        - Products
+
+      summary: Create a new product
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+
+      responses:
+        '200':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+
+        '400':
+          description: Bad request
+
+        '401':
+          description: Unauthorized
+
+  /api/products/{productId}:
+    get:
+      tags:
+        - Products
+
+      summary: Get a single product by the productId
+
+      parameters:
+        - name: productId
+          in: path
+          description: The id of the product
+          required: true
+          schema:
+            type: string
+          example: 'product_xxqm8z3eho'
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+
+        '404':
+          description: Product not found
+
+    put:
+      tags:
+        - Products
+
+      summary: Update a single product
+
+      parameters:
+        - name: productId
+          in: path
+          description: The id of the product
+          required: true
+          schema:
+            type: string
+          example: 'product_xxqm8z3eho'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+
+        '403':
+          description: Forbidden
+
+        '404':
+          description: Product not found
+
+    delete:
+      tags:
+        - Products
+
+      summary: Delete a single product
+
+      parameters:
+        - name: productId
+          in: path
+          description: The id of the product
+          required: true
+          schema:
+            type: string
+          example: 'product_xxqm8z3eho'
+
+      responses:
+        '200':
+          description: Product deleted
+
+        '403':
+          description: Forbidden
+
+        '404':
+          description: Product not found

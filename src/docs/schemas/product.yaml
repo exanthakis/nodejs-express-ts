@@ -1,0 +1,74 @@
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - title
+        - description
+        - price
+        - image
+      properties:
+        title:
+          type: string
+          example: 'Canon EOS 1500D DSLR Camera with 18-55mm Lens'
+
+        description:
+          type: string
+          example: 'Designed for first-time DSLR owners who want impressive results straight out of the box, capture those magic moments no matter your level with the EOS 1500D. With easy to use automatic shooting modes, large 24.1 MP sensor, Canon Camera Connect app integration and built-in feature guide, EOS 1500D is always ready to go.'
+
+        price:
+          type: number
+          format: double
+          example: 879.99
+
+        image:
+          type: string
+          format: uri
+          example: 'https://i.imgur.com/QlRphfQ.jpg'
+
+    ProductResponse:
+      type: object
+      properties:
+        user:
+          type: string
+          example: '642a0de05f16e6dad68efdad'
+
+        _id:
+          type: string
+          example: '642a1cfcc1bec76d8a2e7ac2'
+
+        title:
+          type: string
+          example: 'Canon EOS 1500D DSLR Camera with 18-55mm Lens'
+
+        description:
+          type: string
+          example: 'Designed for first-time DSLR owners who want impressive results straight out of the box, capture those magic moments no matter your level with the EOS 1500D. With easy to use automatic shooting modes, large 24.1 MP sensor, Canon Camera Connect app integration and built-in feature guide, EOS 1500D is always ready to go.'
+
+        price:
+          type: number
+          format: double
+          example: 879.99
+
+        image:
+          type: string
+          format: uri
+          example: 'https://i.imgur.com/QlRphfQ.jpg'
+
+        productId:
+          type: string
+          example: 'product_xxqm8z3eho'
+
+        createdAt:
+          type: string
+          format: date-time
+          example: '2023-04-03T00:25:32.189Z'
+
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2023-04-03T00:25:32.189Z'
+
+        __v:
+          type: number
+          example: 0

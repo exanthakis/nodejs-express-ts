@@ -18,8 +18,7 @@ const productRouter: Router = express.Router();
 
 productRouter.post(
   '/',
-  requireUser,
-  validateResource(createProductSchema),
+  [requireUser, validateResource(createProductSchema)],
   createProductHandler
 );
 

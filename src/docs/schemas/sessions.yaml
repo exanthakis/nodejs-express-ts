@@ -1,0 +1,72 @@
+components:
+  schemas:
+    GetSessionResponse:
+      type: array
+      items:
+        type: object
+        required:
+          - user
+          - valid
+          - userAgent
+          - createdAt
+          - updatedAt
+        properties:
+          _id:
+            type: string
+            example: '64f1a2b3c4d5e6f789012345'
+
+          user:
+            type: string
+            example: '64f1a2b3c4d5e6f789012346'
+
+          valid:
+            type: boolean
+            example: true
+
+          userAgent:
+            type: string
+            example: 'Mozilla/5.0'
+
+          createdAt:
+            type: string
+            format: date-time
+            example: '2026-08-28T12:00:00.000Z'
+
+          updatedAt:
+            type: string
+            format: date-time
+            example: '2026-08-28T12:00:00.000Z'
+
+          __v:
+            type: number
+            example: 0
+
+    CreateSessionInput:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: 'jane.doe@example.com'
+
+        password:
+          type: string
+          format: password
+          example: 'stringPassword123'
+
+    CreateSessionResponse:
+      type: object
+      required:
+        - accessToken
+        - refreshToken
+      properties:
+        accessToken:
+          type: string
+          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+
+        refreshToken:
+          type: string
+          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'

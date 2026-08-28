@@ -1,0 +1,55 @@
+components:
+  schemas:
+    CreateUserInput:
+      type: object
+      required:
+        - email
+        - name
+        - password
+        - passwordConfirmation
+
+      properties:
+        email:
+          type: string
+          format: email
+          example: jane.doe@example.com
+
+        name:
+          type: string
+          example: Jane Doe
+
+        password:
+          type: string
+          format: password
+          example: stringPassword123
+
+        passwordConfirmation:
+          type: string
+          format: password
+          example: stringPassword123
+
+    CreateUserResponse:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 64f1a2b3c4d5e6f789012345
+
+        email:
+          type: string
+          format: email
+          example: jane.doe@example.com
+
+        name:
+          type: string
+          example: Jane Doe
+
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-08-28T12:00:00.000Z'
+
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2026-08-28T12:00:00.000Z'
