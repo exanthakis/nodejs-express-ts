@@ -1,5 +1,6 @@
 export default {
   port: Number(process.env.PORT) || 5001,
+  clientUrl: process.env.CLIENT_URL || 'http://localhost:5173/',
   dbUri: process.env.DB_URI || 'mongodb://127.0.0.1:27017/rest-api-db',
   saltWorkFactor: Number(process.env.SALT_WORK_FACTOR) || 10,
   accessTokenTtl: process.env.ACCESS_TOKEN_TTL || '15m',

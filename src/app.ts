@@ -6,10 +6,17 @@ import routes from './routes/index.ts';
 import logger from './utils/logger.ts';
 import connect from './utils/connect.ts';
 
-const port = config.port;
+const { port, clientUrl } = config;
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: clientUrl,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-refresh'],
+  })
+);
+
 app.use(express.json());
 app.use(deserializeUser);
 
